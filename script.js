@@ -28,7 +28,7 @@ function startGame() {
 function turnClick(square) {
     if (typeof origBoard[square.target.id] == 'number') {
         turn(square.target.id, huPlayer)
-        if (!checkTie()) turn(bestSpot(), aiPlayer); ś
+        if (!checkTie()) turn(bestSpot(), aiPlayer); 
     }
 }
 
@@ -64,22 +64,22 @@ function gameOver(gameWon) {
     declareWinner(gameWon.player == huPlayer ? "You Win!" : "You Loose")
 }
 
-function declareWinner(who){
+function declareWinner(who) {
     document.querySelector(".endgame").style.display = "block";
     document.querySelector(".endgame .text").innerText = who;
 
 }
 
 function emptySquares() {
-    return origBoard.filters(s => typeof s == 'number');
+    return origBoard.filter(s => typeof s == 'number');
 }
 
 function bestSpot() {
     return emptySquares()[0];
 }
 
-function checkTie(){
-    if(emptySquares().length == 0){
+function checkTie() {
+    if (emptySquares().length == 0) {
         for (var i = 0; i < cells.lenght; i++) {
             cells[i].style.backgroundColor = "green";
             cells[i].removeEventListener('click', turnClick, false);
